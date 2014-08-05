@@ -1,0 +1,26 @@
+.page-header {
+  text-align: center;
+}
+
+
+.purchase-item {
+  font-weight: bold;
+}
+
+
+.btn-purchase {
+  margin-top: 10px;
+}
+
+
+.panel-body tfoot {
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+    border-top: 2px solid #777;
+}
+
+
+.remaining {
+    color: #003366;
+}
