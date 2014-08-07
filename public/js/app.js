@@ -1,6 +1,32 @@
 
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngRoute']);
 
+app.config(function($routeProvider) {
+    $routeProvider
+    .when('/', {});
+});
+
+app.directive('jjAddPurchase', function(withdrawalService) {
+    return {
+      restrict: 'E',
+      templateUrl: 'add-purchase.html',
+
+      scope: {
+        idx : '@'
+      },
+
+      link: function(scope, element) {
+
+          scope.addPurchase = function() {
+
+            var newPurchase = {amount: Number(scope.amount), description: scope.desc};
+            withdrawalService.addPurchase(Number(scope.idx), newPurchase);
+            scope.amount = '';
+            scope.desc = '';
+          };
+      }
+    };
+});
 
 app.service('withdrawalService', function() {
 
@@ -10,21 +36,25 @@ app.service('withdrawalService', function() {
         return dummyData;
     }
 
-    this.getWithdrawals = function() {
+    this.getAllWithdrawals = function() {
         return atmWithdrawals;
     }
 
-    this.getTotalAmount = function(id) {
+    this.getOneWithdrawals = function(idx) {
+        return atmWithdrawals[idx];
+    }
 
-        if (atmWithdrawals[id].serviceFee) {
-            return atmWithdrawals[id].serviceFee + atmWithdrawals[id].cashAmount;
+    this.getTotalAmount = function(idx) {
+
+        if (atmWithdrawals[idx].serviceFee) {
+            return atmWithdrawals[idx].serviceFee + atmWithdrawals[idx].cashAmount;
         } else {
-            return atmWithdrawals[id].cashAmount;
+            return atmWithdrawals[idx].cashAmount;
         }
     }
 
-    this.getTotalSpent = function(id) {
-        var transaction = atmWithdrawals[id];
+    this.getTotalSpent = function(idx) {
+        var transaction = atmWithdrawals[idx];
         var totalSpent = 0;
         for (var i = 0; i < transaction.purchases.length; i++) {
             totalSpent += transaction.purchases[i].amount;
@@ -32,14 +62,14 @@ app.service('withdrawalService', function() {
         return totalSpent;
     }
 
-    this.addPurchase = function(id, newPurchase) {
-        atmWithdrawals[id].purchases.push(
+    this.addPurchase = function(idx, newPurchase) {
+        atmWithdrawals[idx].purchases.push(
                 {amount: newPurchase.amount, description: newPurchase.description});
     }
 
     var atmWithdrawals = [
     {
-        id : 0,
+        idx : 0,
            cashAmount : 40,
            serviceFee : 3,
            date : new Date(2014, 6, 10),
@@ -56,7 +86,7 @@ app.service('withdrawalService', function() {
         ]
     },
     {
-        id : 1,
+        idx : 1,
         cashAmount: 60,
         serviceFee: 3,
         date: new Date(2014, 6, 3),
@@ -67,7 +97,7 @@ app.service('withdrawalService', function() {
         ]
     },
     {
-        id : 2,
+        idx : 2,
         cashAmount: 80,
         serviceFee: 2,
         date: new Date(2014, 7, 3),
@@ -83,37 +113,35 @@ app.service('withdrawalService', function() {
 
 });
 
-app.controller('purchaseCtrl', function($scope, withdrawalService) {
+app.controller('atmCtrl', function($scope, withdrawalService) {
 
     $scope.newPurchase = {};
 
     init();
 
     function init() {
-        $scope.withdrawals = withdrawalService.getWithdrawals();
+        $scope.withdrawals = withdrawalService.getAllWithdrawals();
     }
 
     $scope.isDummyData = function() {
-      console.log("call to isDummyData...");
-      console.log(withdrawalService.isDummyData());
         return withdrawalService.isDummyData();
     }
 
 
-    $scope.getTotalAmount = function(id) {
-        return withdrawalService.getTotalAmount(id);
+    $scope.getTotalAmount = function(idx) {
+        return withdrawalService.getTotalAmount(idx);
     }
 
 
-    $scope.getTotalSpent = function(id) {
-        return withdrawalService.getTotalSpent(id);
+    $scope.getTotalSpent = function(idx) {
+        return withdrawalService.getTotalSpent(idx);
     }
 
 
-    $scope.addPurchase = function(id) {
+    $scope.addPurchase = function(idx) {
       var amount = $scope.newPurchase.amount;
       var desc = $scope.newPurchase.desc;
-      withdrawalService.addPurchase(id,
+      withdrawalService.addPurchase(idx,
           { amount: Number(amount),
             description: desc
           });

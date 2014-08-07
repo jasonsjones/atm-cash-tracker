@@ -37,7 +37,7 @@
         </div> <!-- end container -->
       </nav> <!-- end navbar -->
 
-      <div class="page-header" ng-controller="purchaseCtrl">
+      <div class="page-header" ng-controller="atmCtrl">
         <h1>ATM Cash Tracker <small>a tracker for the OCD in me...</small></h1>
         <p class="lead">Single page application to track ATM cash withdrawals
           and itemized purchases.</p>
@@ -51,7 +51,7 @@
           glyphicon-plus"></span> Add ATM Withdaral</button>
       -->
 
-      <div ng-controller="purchaseCtrl">
+      <div ng-controller="atmCtrl">
         <div ng-repeat="transaction in withdrawals">
           <div class="col-md-4">
             <div class="panel panel-default">
@@ -94,23 +94,7 @@
               </div> <!-- end panel-body -->
 
               <div class="panel-footer clearfix">
-                <div class="col-sm-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">$</span>
-                    <input class="form-control" type="text" ng-model="newPurchase.amount">
-                    <span class="input-group-addon">.00</span>
-                  </div>
-                </div>
-                <div class="input-group">
-                  <input class="form-control" type="text"
-                  placeholder="description" ng-model="newPurchase.desc">
-                </div>
-                <div class="pull-right">
-                  <button class="btn btn-primary btn-purchase"
-                    ng-disabled="!newPurchase.amount || !newPurchase.desc"
-                    ng-click="addPurchase($index)"> <span
-                      class="glyphicon glyphicon-plus"></span>Add purchase</button>
-                </div> <!-- end pull-right -->
+                <jj-add-purchase idx={{$index}}></jj-add-purchase>
               </div> <!-- end panel-footer -->
 
             </div><!-- end panel -->
@@ -120,7 +104,28 @@
 
     </div> <!-- end container -->
 
+    <script type="text/ng-template" id="add-purchase.html">
+      <div class="col-sm-6">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input class="form-control" type="number" min="1" ng-model="amount">
+          <span class="input-group-addon">.00</span>
+        </div>
+      </div>
+      <div class="input-group">
+        <input class="form-control" type="text"
+        placeholder="description" ng-model="desc">
+      </div>
+      <div class="pull-right">
+        <button class="btn btn-primary btn-purchase"
+          ng-disabled="!amount || !desc"
+          ng-click="addPurchase($index)"> <span
+            class="glyphicon glyphicon-plus"></span>Add purchase</button>
+      </div> <!-- end pull-right -->
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/app.js" type="text/javascript"></script>
