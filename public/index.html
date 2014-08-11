@@ -37,7 +37,7 @@
         </div> <!-- end container -->
       </nav> <!-- end navbar -->
 
-      <div class="page-header" ng-controller="atmCtrl">
+      <div class="page-header" ng-controller="ATMCtrl">
         <h1>ATM Cash Tracker <small>a tracker for the OCD in me...</small></h1>
         <p class="lead">Single page application to track ATM cash withdrawals
           and itemized purchases.</p>
@@ -50,85 +50,22 @@
       <button class="btn btn-default"> <span class="glyphicon
           glyphicon-plus"></span> Add ATM Withdaral</button>
       -->
-
-      <div ng-controller="atmCtrl">
-        <div ng-repeat="transaction in withdrawals">
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <img class="pull-left" src="images/atm-32.png" alt="atm icon">
-                <h2 class="panel-title text-right">ATM Withdrawal</h2>
-                <p class="text-right">
-                  <em>{{ getTotalAmount($index) | currency }} on
-                    {{ transaction.date | date : shortdate }} </em>
-                </p>
-              </div><!-- end panel-heading -->
-              <div class="panel-body">
-                <table class="table">
-
-                  <thead>
-                    <th>amount</th>
-                    <th>description</th>
-                  </thead>
-
-                  <tbody class="purchase-item">
-                    <tr ng-repeat="p in transaction.purchases">
-                      <td>{{ p.amount | currency }}</td>
-                      <td>{{ p.description }}</td>
-                    </tr>
-                  </tbody>
-
-                  <tfoot>
-                    <tr>
-                      <td>{{ getTotalSpent($index) | currency }}</td>
-                      <td>total</td>
-                    </tr>
-                    <tr class="text-right remaining">
-                      <td>{{ (getTotalAmount($index) - getTotalSpent($index)) | currency }}</td>
-                      <td>remaining</td>
-                    </tr>
-                  </tfoot>
-
-                </table>
-
-              </div> <!-- end panel-body -->
-
-              <div class="panel-footer clearfix">
-                <jj-add-purchase idx={{$index}}></jj-add-purchase>
-              </div> <!-- end panel-footer -->
-
-            </div><!-- end panel -->
-          </div> <!-- end col-md-4 -->
-        </div> <!-- end ng-repeat for withdrawals -->
-      </div> <!-- end controller -->
+      <div ng-view=""></div>
 
     </div> <!-- end container -->
 
     <script type="text/ng-template" id="add-purchase.html">
-      <div class="col-sm-6">
-        <div class="input-group">
-          <span class="input-group-addon">$</span>
-          <input class="form-control" type="number" min="1" ng-model="amount">
-          <span class="input-group-addon">.00</span>
-        </div>
-      </div>
-      <div class="input-group">
-        <input class="form-control" type="text"
-        placeholder="description" ng-model="desc">
-      </div>
-      <div class="pull-right">
-        <button class="btn btn-primary btn-purchase"
-          ng-disabled="!amount || !desc"
-          ng-click="addPurchase($index)"> <span
-            class="glyphicon glyphicon-plus"></span>Add purchase</button>
-      </div> <!-- end pull-right -->
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
     <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/controllers/atmCtrl.js" type="text/javascript"></script>
+    <script src="js/services/withdrawalService.js" type="text/javascript"></script>
+    <script src="js/directives/jjaddpurchase.js" type="text/javascript"></script>
 
   </body>
 </html>
