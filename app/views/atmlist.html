@@ -1,51 +1,48 @@
 
-<div ng-controller="ATMCtrl">
-  <div ng-repeat="transaction in withdrawals">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <img class="pull-left" src="images/atm-32.png" alt="atm icon">
-          <h2 class="panel-title text-right">ATM Withdrawal</h2>
-          <p class="text-right">
-            <em>{{ getTotalAmount($index) | currency }} on
-              {{ transaction.date | date : shortdate }} </em>
-          </p>
-        </div><!-- end panel-heading -->
-        <div class="panel-body">
-          <table class="table">
+<div ng-repeat="transaction in withdrawals">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <img class="pull-left" src="images/atm-32.png" alt="atm icon">
+        <h2 class="panel-title text-right">ATM Withdrawal</h2>
+        <p class="text-right">
+          <em>{{ getTotalAmount(transaction) | currency }} on </em>
+        </p>
+      </div><!-- end panel-heading -->
+      <div class="panel-body">
+        <table class="table">
 
-            <thead>
-              <th>amount</th>
-              <th>description</th>
-            </thead>
+          <thead>
+            <th>amount</th>
+            <th>description</th>
+          </thead>
 
-            <tbody class="purchase-item">
-              <tr ng-repeat="p in transaction.purchases">
-                <td>{{ p.amount | currency }}</td>
-                <td>{{ p.description }}</td>
-              </tr>
-            </tbody>
+          <tbody class="purchase-item">
+            <tr ng-repeat="p in transaction.purchases">
+              <td>{{ p.amount | currency }}</td>
+              <td>{{ p.description }}</td>
+            </tr>
+          </tbody>
 
-            <tfoot>
-              <tr>
-                <td>{{ getTotalSpent($index) | currency }}</td>
-                <td>total</td>
-              </tr>
-              <tr class="text-right remaining">
-                <td>{{ (getTotalAmount($index) - getTotalSpent($index)) | currency }}</td>
-                <td>remaining</td>
-              </tr>
-            </tfoot>
+          <tfoot>
+            <tr>
+              <td>{{ getTotalSpent(transaction) | currency }}</td>
+              <td>total</td>
+            </tr>
+            <tr class="text-right remaining">
+              <td>{{ (getTotalAmount(transaction) - getTotalSpent(transaction)) | currency }}</td>
+              <td>remaining</td>
+            </tr>
+          </tfoot>
 
-          </table>
+        </table>
 
-        </div> <!-- end panel-body -->
+      </div> <!-- end panel-body -->
 
-        <div class="panel-footer clearfix">
-          <jj-add-purchase idx={{$index}}></jj-add-purchase>
-        </div> <!-- end panel-footer -->
+      <div class="panel-footer clearfix">
+        <jj-add-purchase idx={{$index}}></jj-add-purchase>
+      </div> <!-- end panel-footer -->
 
-      </div><!-- end panel -->
-    </div> <!-- end col-md-4 -->
-  </div> <!-- end ng-repeat for withdrawals -->
-</div> <!-- end controller -->
+    </div><!-- end panel -->
+  </div> <!-- end col-md-4 -->
+</div> <!-- end ng-repeat for withdrawals -->
