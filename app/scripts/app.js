@@ -6,7 +6,12 @@ app.config(function($routeProvider) {
     $routeProvider
     .when('/', {
         templateUrl: 'views/atmlist.html',
-        controller: 'ATMCtrl'
+        controller: 'ATMCtrl',
+        resolve: {
+            getData: function(withdrawalService) {
+                return withdrawalService.initJSONData();
+            }
+        }
     })
     .otherwise({
         redirectTo: '/'

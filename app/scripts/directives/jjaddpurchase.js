@@ -5,14 +5,14 @@ app.directive('jjAddPurchase', function(withdrawalService) {
       templateUrl: 'views/add-purchase.html',
 
       scope: {
-        idx : '@'
+        trans : '@'
       },
 
       link: function(scope, element) {
 
           scope.addPurchase = function() {
             var newPurchase = {amount: Number(scope.amount), description: scope.desc};
-            withdrawalService.addPurchase(Number(scope.idx), newPurchase);
+            withdrawalService.addPurchase(JSON.parse(scope.trans), newPurchase);
             scope.amount = '';
             scope.desc = '';
           };

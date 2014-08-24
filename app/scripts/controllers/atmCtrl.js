@@ -1,16 +1,13 @@
 
 app.controller('ATMCtrl', function($scope, withdrawalService) {
     $scope.newPurchase = {};
+    $scope.withdrawals = [];
     init();
 
     function init() {
         console.log("initializing the ATM controller...");
-
-        var promise = withdrawalService.getDataPromise();
-        promise.then(function(payload) {
-           $scope.withdrawals = payload.data;
-        });
-
+        $scope.withdrawals = withdrawalService.getData();
+        console.log($scope.withdrawals);
     }
 
     $scope.isDummyData = function() {
@@ -26,7 +23,6 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
         }
     }
 
-
     $scope.getTotalSpent = function(transaction) {
         var totalSpent = 0;
         for (var i = 0; i < transaction.purchases.length; i++) {
@@ -37,7 +33,12 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
 
 
     $scope.addPurchase = function(transaction, newBuy) {
-        transaction.purchases.push(newBuy);
+        withdrawalService.addPurchase(transaction, newBuy);
+        $scope.withdrawals = withdrawalService.getData();
     }
+
+    $scope.$watch('withdrawalService.getData()', function(newVal, oldVal) {
+        console.log('New Data: ' + newVal);
+    })
 
 });

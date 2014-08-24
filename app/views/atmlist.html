@@ -1,4 +1,13 @@
 
+<div class="page-header">
+  <h1>ATM Cash Tracker <small>a tracker for the OCD in me...</small></h1>
+  <p class="lead">Single page application to track ATM cash withdrawals
+    and itemized purchases.</p>
+  <p ng-show="{{isDummyData()}}"><em>NOTE: The data contained on this page is dummy data, but is a
+      good representation of real data that will be managed by this
+      app.</em></p>
+</div> <!-- end page-header -->
+
 <div ng-repeat="transaction in withdrawals">
   <div class="col-md-4">
     <div class="panel panel-default">
@@ -40,7 +49,7 @@
       </div> <!-- end panel-body -->
 
       <div class="panel-footer clearfix">
-        <jj-add-purchase idx={{$index}}></jj-add-purchase>
+        <jj-add-purchase trans={{transaction}}></jj-add-purchase>
       </div> <!-- end panel-footer -->
 
     </div><!-- end panel -->

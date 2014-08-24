@@ -1,9 +1,11 @@
 <div class="col-sm-6">
+
   <div class="input-group">
     <span class="input-group-addon">$</span>
     <input class="form-control" type="text" ng-model="amount">
     <span class="input-group-addon">.00</span>
   </div>
+
 </div>
 
 <div class="input-group">
@@ -12,7 +14,7 @@
 
 <div class="pull-right">
   <button class="btn btn-primary btn-purchase"
-    ng-disabled="!amount || !desc"
-    ng-click="addPurchase($index)"> <span
-      class="glyphicon glyphicon-plus"></span>Add purchase</button>
+          ng-disabled="!amount || !desc"
+          ng-click="addPurchase()">
+          <span class="glyphicon glyphicon-plus"></span>Add purchase</button>
 </div> <!-- end pull-right -->
