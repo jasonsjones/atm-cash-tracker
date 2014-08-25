@@ -1,6 +1,6 @@
 [
     {
-      "id" : 0,
+      "idx" : 0,
       "cashAmount" : 40,
       "serviceFee" : 3,
       "date" : "new Date(2014, 6, 10)",

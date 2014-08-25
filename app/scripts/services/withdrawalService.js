@@ -27,12 +27,14 @@ app.service('withdrawalService', function($http, $q) {
     }
 
     this.addPurchase = function(transaction, newPurchase) {
-        console.log(newPurchase);
-        transaction.purchases.push( {
+        var idx = transaction.idx;
+        var wd = atmWithdrawals[idx];
+
+
+        wd.purchases.push( {
             "amount": newPurchase.amount, 
             "description": newPurchase.description
         });
-        console.log(transaction);
     }
 });
 

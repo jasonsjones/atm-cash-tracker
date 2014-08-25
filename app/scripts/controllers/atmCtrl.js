@@ -7,7 +7,6 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
     function init() {
         console.log("initializing the ATM controller...");
         $scope.withdrawals = withdrawalService.getData();
-        console.log($scope.withdrawals);
     }
 
     $scope.isDummyData = function() {
@@ -30,15 +29,5 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
         }
         return totalSpent;
     }
-
-
-    $scope.addPurchase = function(transaction, newBuy) {
-        withdrawalService.addPurchase(transaction, newBuy);
-        $scope.withdrawals = withdrawalService.getData();
-    }
-
-    $scope.$watch('withdrawalService.getData()', function(newVal, oldVal) {
-        console.log('New Data: ' + newVal);
-    })
 
 });
