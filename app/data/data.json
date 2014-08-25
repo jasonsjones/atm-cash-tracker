@@ -3,7 +3,11 @@
       "idx" : 0,
       "cashAmount" : 40,
       "serviceFee" : 3,
-      "date" : "new Date(2014, 6, 10)",
+      "date" : {
+        "year": 2014,
+        "month": 6,
+        "day": 10
+      },
       "purchases" : [
         {"amount": 3, "description": "ATM service fee"},
         {"amount": 5, "description": "lunch"},
@@ -20,7 +24,11 @@
         "idx" : 1,
         "cashAmount": 60,
         "serviceFee": 3,
-        "date": "new Date(2014, 6, 3)",
+        "date" : {
+          "year": 2014,
+          "month": 6,
+          "day": 3
+        },
         "purchases" : [
             {"amount": 3, "description": "ATM service fee"},
             {"amount": 5, "description": "lunch"},
@@ -31,7 +39,11 @@
         "idx" : 2,
         "cashAmount": 80,
         "serviceFee": 2,
-        "date": "new Date(2014, 7, 3)",
+        "date" : {
+          "year": 2014,
+          "month": 7,
+          "day": 3
+        },
         "purchases" : [
             {"amount": 2, "description": "ATM service fee"},
             {"amount": 5, "description": "lunch"},
