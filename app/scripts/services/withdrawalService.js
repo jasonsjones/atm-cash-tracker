@@ -6,25 +6,27 @@ app.service('withdrawalService', function($http, $q) {
 
     this.isDummyData = function() {
         return dummyData;
-    }
+    };
 
     this.initJSONData = function() {
         var d = $q.defer();
         $http.get('data/data.json')
             .then(function(response) {
-                d.resolve(response.data)
-                atmWithdrawals = response.data;
                 console.log("Getting data in getJSONData...");
+                atmWithdrawals = response.data;
                 console.log(atmWithdrawals);
+                convertDates();
+                console.log(atmWithdrawals);
+                d.resolve(response.data)
             }, function err(reason) {
                 d.reject(reason)
             });
         return d.promise;
-    }
+    };
 
     this.getData = function() {
         return atmWithdrawals;
-    }
+    };
 
     this.addPurchase = function(transaction, newPurchase) {
         var idx = transaction.idx;
@@ -32,9 +34,25 @@ app.service('withdrawalService', function($http, $q) {
 
 
         wd.purchases.push( {
-            "amount": newPurchase.amount, 
+            "amount": newPurchase.amount,
             "description": newPurchase.description
         });
-    }
+    };
+
+    var buildDateObj = function(date) {
+        var year = date.year;
+        var month = date.month;
+        var day = date.day;
+
+        return new Date(year, month, day);
+    };
+
+    var convertDates = function() {
+        for (var i = 0; i < atmWithdrawals.length; i++) {
+            var v = atmWithdrawals[i];
+            v.date = buildDateObj(v.date);
+            console.log(v.date);
+        }
+    };
 });
 
