@@ -1,3 +1,4 @@
+'use strict';
 
 app.controller('ATMCtrl', function($scope, withdrawalService) {
     $scope.newPurchase = {};

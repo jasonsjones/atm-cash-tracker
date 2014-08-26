@@ -1,4 +1,6 @@
 // simple webserver using node.js and the express framework
+'use strict';
+
 var express = require('express');
 var app = express();
 

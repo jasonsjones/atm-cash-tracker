@@ -1,3 +1,4 @@
+'use strict';
 
 app.directive('jjAddPurchase', function(withdrawalService) {
     return {
