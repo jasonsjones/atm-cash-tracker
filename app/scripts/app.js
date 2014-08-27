@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
         controller: 'ATMCtrl',
         resolve: {
             getData: function(withdrawalService) {
-                return withdrawalService.initJSONData();
+                return withdrawalService.initJSONData('data.json');
             }
         }
     })

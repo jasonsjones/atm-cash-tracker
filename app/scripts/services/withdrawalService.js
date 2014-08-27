@@ -9,9 +9,9 @@ app.service('withdrawalService', function($http, $q) {
         return dummyData;
     };
 
-    this.initJSONData = function() {
+    this.initJSONData = function(dataFile) {
         var d = $q.defer();
-        $http.get('data/data.json')
+        $http.get('data/' + dataFile)
             .then(function(response) {
                 console.log("Getting data in getJSONData...");
                 atmWithdrawals = response.data;
