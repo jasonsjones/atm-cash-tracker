@@ -1,3 +1,5 @@
+/* global app */
+
 'use strict';
 
 app.service('withdrawalService', function($http, $q) {
@@ -13,14 +15,14 @@ app.service('withdrawalService', function($http, $q) {
         var d = $q.defer();
         $http.get('data/' + dataFile)
             .then(function(response) {
-                console.log("Getting data in getJSONData...");
+                console.log('Getting data in getJSONData...');
                 atmWithdrawals = response.data;
                 console.log(atmWithdrawals);
                 convertDates();
                 console.log(atmWithdrawals);
-                d.resolve(response.data)
+                d.resolve(response.data);
             }, function err(reason) {
-                d.reject(reason)
+                d.reject(reason);
             });
         return d.promise;
     };
@@ -35,8 +37,8 @@ app.service('withdrawalService', function($http, $q) {
 
 
         wd.purchases.push( {
-            "amount": newPurchase.amount,
-            "description": newPurchase.description
+            'amount': newPurchase.amount,
+            'description': newPurchase.description
         });
     };
 

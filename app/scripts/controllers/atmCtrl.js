@@ -12,7 +12,7 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
 
     $scope.isDummyData = function() {
         return withdrawalService.isDummyData();
-    }
+    };
 
 
     $scope.getTotalAmount = function(transaction) {
@@ -21,7 +21,7 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
         } else {
             return transaction.cashAmount;
         }
-    }
+    };
 
     $scope.getTotalSpent = function(transaction) {
         var totalSpent = 0;
@@ -29,6 +29,6 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
             totalSpent += transaction.purchases[i].amount;
         }
         return totalSpent;
-    }
+    };
 
 });
