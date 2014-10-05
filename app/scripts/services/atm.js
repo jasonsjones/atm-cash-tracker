@@ -1,5 +1,3 @@
-/* global app */
-
 'use strict';
 
 app.service('withdrawalService', function($http, $q) {

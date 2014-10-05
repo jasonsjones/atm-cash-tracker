@@ -1,13 +1,12 @@
-"use strict";
+'use strict';
 
 var app = angular.module('app', ['ngRoute']);
-
 
 app.config(function($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/atmlist.html',
-        controller: 'ATMCtrl',
+        templateUrl: 'views/mainview.html',
+        controller: 'MainCtrl as main',
         resolve: {
             getData: function(withdrawalService) {
                 return withdrawalService.initJSONData('data.json');

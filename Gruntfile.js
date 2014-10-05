@@ -7,6 +7,7 @@ module.exports = function(grunt) {
             controllers: 'app/scripts/controllers/*.js',
             services: 'app/scripts/services/*.js',
             directives: 'app/scripts/directives/*.js',
+
             options: {
                 node: true,
                 camelcase: true,
