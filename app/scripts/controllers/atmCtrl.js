@@ -1,62 +1,66 @@
-'use strict';
+(function () {
+  'use strict';
 
-app.controller('ATMController', function($scope, withdrawalService) {
+  var app = angular.module('app');
 
-    $scope.newPurchase = {};
-    $scope.withdrawals = [];
+  app.controller('ATMController', function($scope, withdrawalService) {
 
-
-    this.message = 'ATM Controller...';
-    this.xTransaction =  {
-      'idx' : 0,
-      'cashAmount' : 40,
-      'serviceFee' : 3,
-      'date' : {
-        'year': 2014,
-        'month': 6,
-        'day': 10
-      },
-      'purchases' : [
-        {'amount': 3, 'description': 'ATM service fee'},
-        {'amount': 5, 'description': 'lunch'},
-        {'amount': 2, 'description': 'shaving cream'},
-        {'amount': 2, 'description': 'groceries'},
-        {'amount': 6, 'description': 'coffee dues'},
-        {'amount': 6, 'description': 'lunch'},
-        {'amount': 11, 'description': 'lunch'},
-        {'amount': 1, 'description': 'tip'},
-        {'amount': 5, 'description': 'lunch'}
-      ]
-    };
+      $scope.newPurchase = {};
+      $scope.withdrawals = [];
 
 
-    function init() {
-        console.log('initializing the ATM controller...');
-        $scope.withdrawals = withdrawalService.getData();
-    }
+      this.message = 'ATM Controller...';
+      this.xTransaction =  {
+        'idx' : 0,
+        'cashAmount' : 40,
+        'serviceFee' : 3,
+        'date' : {
+          'year': 2014,
+          'month': 6,
+          'day': 10
+        },
+        'purchases' : [
+          {'amount': 3, 'description': 'ATM service fee'},
+          {'amount': 5, 'description': 'lunch'},
+          {'amount': 2, 'description': 'shaving cream'},
+          {'amount': 2, 'description': 'groceries'},
+          {'amount': 6, 'description': 'coffee dues'},
+          {'amount': 6, 'description': 'lunch'},
+          {'amount': 11, 'description': 'lunch'},
+          {'amount': 1, 'description': 'tip'},
+          {'amount': 5, 'description': 'lunch'}
+        ]
+      };
 
 
-    $scope.isDummyData = function() {
-        return withdrawalService.isDummyData();
-    };
+      function init() {
+          console.log('initializing the ATM controller...');
+          $scope.withdrawals = withdrawalService.getData();
+      }
 
 
-    $scope.getTotalAmount = function(transaction) {
-        if (transaction.serviceFee) {
-            return transaction.serviceFee + transaction.cashAmount;
-        } else {
-            return transaction.cashAmount;
-        }
-    };
+      $scope.isDummyData = function() {
+          return withdrawalService.isDummyData();
+      };
 
 
-    $scope.getTotalSpent = function(transaction) {
-        var totalSpent = 0;
-        for (var i = 0; i < transaction.purchases.length; i++) {
-            totalSpent += transaction.purchases[i].amount;
-        }
-        return totalSpent;
-    };
+      $scope.getTotalAmount = function(transaction) {
+          if (transaction.serviceFee) {
+              return transaction.serviceFee + transaction.cashAmount;
+          } else {
+              return transaction.cashAmount;
+          }
+      };
 
-    //init();
-});
+
+      $scope.getTotalSpent = function(transaction) {
+          var totalSpent = 0;
+          for (var i = 0; i < transaction.purchases.length; i++) {
+              totalSpent += transaction.purchases[i].amount;
+          }
+          return totalSpent;
+      };
+
+      //init();
+  });
+}());

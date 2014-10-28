@@ -1,8 +1,10 @@
 // main controller
-'use strict';
+(function () {
+  'use strict';
 
-app.controller('MainController', function() {
-});
+  var app = angular.module('app');
 
-
-
+  app.controller('MainController', function() {
+  });
+    
+}());
