@@ -1,14 +1,40 @@
 'use strict';
 
-app.controller('ATMCtrl', function($scope, withdrawalService) {
+app.controller('ATMController', function($scope, withdrawalService) {
+
     $scope.newPurchase = {};
     $scope.withdrawals = [];
-    init();
+
+
+    this.message = 'ATM Controller...';
+    this.xTransaction =  {
+      'idx' : 0,
+      'cashAmount' : 40,
+      'serviceFee' : 3,
+      'date' : {
+        'year': 2014,
+        'month': 6,
+        'day': 10
+      },
+      'purchases' : [
+        {'amount': 3, 'description': 'ATM service fee'},
+        {'amount': 5, 'description': 'lunch'},
+        {'amount': 2, 'description': 'shaving cream'},
+        {'amount': 2, 'description': 'groceries'},
+        {'amount': 6, 'description': 'coffee dues'},
+        {'amount': 6, 'description': 'lunch'},
+        {'amount': 11, 'description': 'lunch'},
+        {'amount': 1, 'description': 'tip'},
+        {'amount': 5, 'description': 'lunch'}
+      ]
+    };
+
 
     function init() {
-        console.log("initializing the ATM controller...");
+        console.log('initializing the ATM controller...');
         $scope.withdrawals = withdrawalService.getData();
     }
+
 
     $scope.isDummyData = function() {
         return withdrawalService.isDummyData();
@@ -23,6 +49,7 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
         }
     };
 
+
     $scope.getTotalSpent = function(transaction) {
         var totalSpent = 0;
         for (var i = 0; i < transaction.purchases.length; i++) {
@@ -31,4 +58,5 @@ app.controller('ATMCtrl', function($scope, withdrawalService) {
         return totalSpent;
     };
 
+    //init();
 });
