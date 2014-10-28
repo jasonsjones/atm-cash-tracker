@@ -11,46 +11,92 @@
 
   <body data-ng-app="app">
 
+    <!-- navbar section -->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- toggle not yet implemented... -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target="#example-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" >J2 Technologies</a>
+        </div> <!-- end brand and toggle button group -->
+
+        <ul class="nav navbar-nav">
+          <li><button class="btn btn-default navbar-btn" >
+              <span class="glyphicon glyphicon-plus"></span> Add ATM Withdrawal</button></li>
+        </ul>
+
+        <!-- collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#contact" data-toggle="modal">Contact Me</a></li>
+          </ul>
+        </div> <!-- end nav links -->
+
+      </div> <!-- end container -->
+    </nav>
+
+    <!-- page-header section -->
     <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="page-header">
+          <h1>ATM Cash Tracker <small>a tracker for the OCD in me...</small></h1>
+          <p class="lead">Single page application to track ATM cash withdrawals
+            and itemized purchases.</p>
+          <p>
+            <em>NOTE: The data contained on this page is dummy data, however it is a
+              good representation of real data that could be managed by this app.</em>
+          </p>
+        </div> <!-- end page-header -->
+      </div>
+    </div>
 
-      <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-              data-target="#bs-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">J2 Technologies</a>
-          </div> <!-- end navbar-header -->
-          <!-- collect the nav links -->
-          <div id="bs-navbar-collapse" class="navbar-collapse collapse">
-            <ul class="navbar-nav nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About Me</a></li>
-              <li><button class="btn btn-default navbar-btn" >
-                  <span class="glyphicon glyphicon-plus"></span> Add ATM Withdaral</button></li>
-            </ul>
-          </div>
-        </div> <!-- end container -->
-      </nav> <!-- end navbar -->
+    <div ng-view></div>
 
-      <div class="page-header" ng-controller="ATMController">
-        <h1>ATM Cash Tracker <small>a tracker for the OCD in me...</small></h1>
-        <p class="lead">Single page application to track ATM cash withdrawals
-          and itemized purchases.</p>
-        <p ng-show="{{isDummyData()}}">
-          <em>NOTE: The data contained on this page is dummy data, but is a
-            good representation of real data that will be managed by this
-            app.</em>
-        </p>
-      </div> <!-- end page-header -->
+    <!-- fixed footer -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <p class="navbar-text pull-left">Site built by Jason Jones with
+          <a href="http://getbootstrap.com">Bootstrap 3</a></p>
+        <a href="https://plus.google.com/+jasonjones96"
+           class="navbar-btn btn btn-danger pull-right">Find me on Google+</a>
+      </div> <!-- end container -->
+    </div> <!-- end fixed footer div -->
 
-      <div ng-view></div>
+    <!-- modal section -->
+    <div class="modal fade" id="contact" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4>Contact J2 Technologies</h4>
+              </div>
+              <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                  aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum.</p>
+              </div> <!-- end modal-body -->
+              <div class="modal-footer">
+                <a class="btn btn-primary" href="#" data-dismiss="modal">Send</a>
+                <a class="btn btn-default" href="#" data-dismiss="modal">Close</a>
+              </div> <!-- end modal-footer -->
+            </div>
+      </div>
+    </div> <!-- end modal div -->
 
-    </div> <!-- end container -->
 
     <script type="text/ng-template" id="add-purchase.html"> </script>
 
