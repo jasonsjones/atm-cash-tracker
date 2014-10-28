@@ -60,7 +60,13 @@
       </div>
     </div> <!-- end page-header -->
 
-    <div ng-view></div>
+    <div class="col-sm-2 col-sm-offset-2">
+      <div ng-include='"views/atm-list-sidebar.html"'></div>
+    </div>
+
+    <div class="col-sm-6">
+      <div ng-view></div>
+    </div>
 
     <!-- fixed footer -->
     <div class="navbar navbar-default navbar-fixed-bottom">
