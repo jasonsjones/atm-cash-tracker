@@ -60,10 +60,12 @@
       </div>
     </div> <!-- end page-header -->
 
+    <!-- ATM list sidebar section -->
     <div class="col-sm-2 col-sm-offset-2">
       <div ng-include='"views/atm-list-sidebar.html"'></div>
     </div>
 
+    <!-- main section -->
     <div class="col-sm-6">
       <div ng-view></div>
     </div>
@@ -105,9 +107,9 @@
 
 
     <!-- vendor javascript (from bower) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="scripts/app.js" type="text/javascript"></script>
