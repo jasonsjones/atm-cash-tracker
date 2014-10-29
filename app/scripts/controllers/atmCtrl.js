@@ -1,15 +1,12 @@
 (function () {
   'use strict';
 
-  var app = angular.module('app');
+  angular.module('app')
 
-  app.controller('ATMController', function($scope, withdrawalService) {
+  .controller('ATMController', function() {
 
-      $scope.newPurchase = {};
-      $scope.withdrawals = [];
-
-
-      this.message = 'ATM Controller...';
+      console.log("atmCtrl loaded...");
+      this.message = 'ATM Transaction details...';
       this.xTransaction =  {
         'idx' : 0,
         'cashAmount' : 40,
@@ -33,6 +30,23 @@
       };
 
 
+      this.getTotalAmount = function(transaction) {
+          if (transaction.serviceFee) {
+              return transaction.serviceFee + transaction.cashAmount;
+          } else {
+              return transaction.cashAmount;
+          }
+      };
+
+
+      this.getTotalSpent = function(transaction) {
+          var totalSpent = 0;
+          for (var i = 0; i < transaction.purchases.length; i++) {
+              totalSpent += transaction.purchases[i].amount;
+          }
+          return totalSpent;
+      };
+/*
       function init() {
           console.log('initializing the ATM controller...');
           $scope.withdrawals = withdrawalService.getData();
@@ -62,5 +76,6 @@
       };
 
       //init();
+      */
   });
 }());

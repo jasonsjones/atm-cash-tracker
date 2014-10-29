@@ -1,14 +1,15 @@
-  <h3>ATM transaction list</h3>
+<div class="list-group" ng-controller="atmSidebarCtrl as atmSb">
 
-  <div class="list-group" >
+  <h3>{{ atmSb.title }}</h3>
 
-    <a class="list-group-item" href="#">
-      <h4 class="list-group-item-heading">$43.00</h4>
-      <p class="list-group-item-text">on 10/23/14</p>
+  <div ng-repeat="data in atmSb.xData">
+
+    <a class="list-group-item" href="#/atmdetails/{{ data.idx }}"
+       ng-click="atmSb.setSelected(data.idx)"
+       ng-class="{ active: data.idx === atmSb.idxSelected }">
+
+      <h4 class="list-group-item-heading">{{ data.cashAmount | currency }}</h4>
+      <p class="list-group-item-text">on {{ data.date | date }}</p>
     </a>
-
-    <a class="list-group-item" href="#">
-      <h4 class="list-group-item-heading">$63.00</h4>
-      <p class="list-group-item-text">on 10/14/14</p>
-    </a>
-  </div> <!-- end list-group -->
+  </div>
+</div> <!-- end list-group -->

@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  var app = angular.module('app', ['ngRoute']);
+  angular.module('app', ['ngRoute'])
 
-  app.config(function($routeProvider) {
+  .config(function($routeProvider) {
       $routeProvider
       .when('/', {
           templateUrl: 'views/mainview.html',
@@ -17,7 +17,7 @@
           }
         */
       })
-      .when('/atmdetails', {
+      .when('/atmdetails/:id', {
           templateUrl: 'views/atm-details-view.html',
           controller: 'ATMController',
           controllerAs: 'atm'
@@ -26,5 +26,5 @@
           redirectTo: '/'
       });
   });
-    
+
 }());
