@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+    'use strict';
 
     grunt.initConfig({
 
@@ -15,6 +16,8 @@ module.exports = function(grunt) {
                 eqeqeq: true,
                 forin: true,
                 indent: 4,
+                latedef: 'nofunc',
+                validthis: true,
 
                 globals: {
                     app: true,

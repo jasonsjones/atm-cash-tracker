@@ -4,7 +4,12 @@
 
   angular.module('atmApp')
 
-  .controller('MainController', function() {
-  });
-    
+      .controller('MainController', MainController);
+ 
+  ////////////////
+
+  function MainController() {
+      // body...
+  }
+
 }());
