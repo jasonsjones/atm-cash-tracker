@@ -1,8 +1,9 @@
 (function () {
   'use strict';
 
-  var app = angular.module('app');
-  app.service('withdrawalService', function($http, $q) {
+  angular.module('atmApp')
+
+  .service('atmService', function($http, $q) {
 
       var dummyData = true;
       var atmWithdrawals = [];

@@ -2,9 +2,9 @@
 (function () {
   'use strict';
 
-  var app = angular.module('app');
+  angular.module('atmApp')
 
-  app.controller('MainController', function() {
+  .controller('MainController', function() {
   });
     
 }());

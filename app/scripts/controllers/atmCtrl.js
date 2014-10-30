@@ -1,11 +1,11 @@
 (function () {
   'use strict';
 
-  angular.module('app')
+  angular.module('atmApp')
 
   .controller('ATMController', function() {
 
-      console.log("atmCtrl loaded...");
+      console.log('atmCtrl loaded...');
       this.message = 'ATM Transaction details...';
       this.xTransaction =  {
         'idx' : 0,

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('app', ['ngRoute'])
+  angular.module('atmApp', ['ngRoute'])
 
   .config(function($routeProvider) {
       $routeProvider
