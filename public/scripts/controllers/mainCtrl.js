@@ -1,15 +1,15 @@
 // main controller
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('atmApp')
+    angular.module('atmApp')
 
-      .controller('MainController', MainController);
- 
-  ////////////////
+    .controller('MainController', MainController);
 
-  function MainController() {
-      // body...
-  }
+    ////////////////
+
+    function MainController() {
+        // body...
+    }
 
 }());

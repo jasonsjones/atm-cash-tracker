@@ -1,30 +1,30 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('atmApp', ['ngRoute'])
+    angular.module('atmApp', ['ngRoute'])
 
-  .config(function($routeProvider) {
-      $routeProvider
-      .when('/', {
-          templateUrl: 'views/mainview.html',
-          controller: 'MainController',
-          controllerAs: 'main'
-        /*
-          resolve: {
-              getData: function(withdrawalService) {
-                  return withdrawalService.initJSONData('data.json');
-              }
-          }
-        */
-      })
-      .when('/atmdetails/:id', {
-          templateUrl: 'views/atm-details-view.html',
-          controller: 'ATMController',
-          controllerAs: 'atm'
-      })
-      .otherwise({
-          redirectTo: '/'
-      });
-  });
+    .config(function($routeProvider) {
+        $routeProvider
+        .when('/', {
+            templateUrl: 'views/mainview.html',
+            controller: 'MainController',
+            controllerAs: 'main'
+            /*
+                resolve: {
+                getData: function(withdrawalService) {
+                return withdrawalService.initJSONData('data.json');
+                }
+                }
+                */
+        })
+        .when('/atmdetails/:id', {
+            templateUrl: 'views/atm-details-view.html',
+            controller: 'ATMController',
+            controllerAs: 'atm'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+    });
 
 }());

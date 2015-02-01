@@ -7,6 +7,7 @@
 
     /////////////
     function atmService($http, $q) {
+        /* jshint validthis: true */
         var vm = this;
         var dummyData = true;
         var atmWithdrawals = [];
@@ -39,7 +40,7 @@
             var idx = transaction.idx;
             var wd = atmWithdrawals[idx];
 
-            wd.purchases.push( {
+            wd.purchases.push({
                 'amount': newPurchase.amount,
                 'description': newPurchase.description
             });

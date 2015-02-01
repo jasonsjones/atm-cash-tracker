@@ -8,6 +8,7 @@
     /////////////
 
     function atmSidebarCtrl() {
+        /* jshint validthis: true */
         console.log('atmSidebarCtrl loaded...');
 
         var vm = this;
