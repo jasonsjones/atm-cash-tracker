@@ -4,10 +4,10 @@
 var express = require('express');
 var app = express();
 
-app.use('/', express.static('./app'));
+app.use('/', express.static('./public'));
 
 app.get('/', function(req, res) {
-    res.send('index');
+    res.sendFile('index.html');
 });
 
 app.listen(8080);
